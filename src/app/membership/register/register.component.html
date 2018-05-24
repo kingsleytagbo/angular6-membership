@@ -1,0 +1,169 @@
+< <header>
+  <nav class="navbar navbar-default">
+  </nav>
+  </header>
+  <div class="container">
+
+    <div class="row" id="membership">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+
+        <div class="jumbotron text-center">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <form class="form-signin" method="post" action="Register">
+                  <header>
+                    <h1 class="form-signin-heading">Please Register</h1>
+                  </header>
+                  <div class="form-row text-left">
+                    <section class="col col-md-12">
+                      <div class="row">
+                        <div class="form-group">
+                          <label for="ITCC_UserID"></label>
+                          <input type="hidden" class="form-control" id="ITCC_UserID" />
+                          <input type="hidden" class="form-control" id="UserID" />
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                  <div class="form-row text-left">
+                    <section class="col col-md-5">
+                      <div class="row">
+                        <div class="form-group col-lg-12">
+                          <label for="FirstName">First Name</label>
+                          <input type="text" class="form-control input-md" id="FirstName" name="FirstName" placeholder="First Name" required />
+                        </div>
+                      </div>
+                    </section>
+                    <section class="col col-md-2">
+                      <div class="row">
+                        <div class="form-group col-lg-12">
+                          <label for="MiddleInitial">M.I.</label>
+                          <input type="text" class="form-control input-md" id="MiddleInitial" name="MiddleInitial" placeholder="M.I." />
+                        </div>
+                      </div>
+                    </section>
+                    <section class="col col-md-5">
+                      <div class="row">
+                        <div class="form-group col-lg-12">
+                          <label for="LastName">Last Name</label>
+                          <input type="text" class="form-control input-md" id="LastName" name="LastName" placeholder="Last Name" required />
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                  <div class="form-row text-left">
+                    <section class="col col-md-6">
+                      <div class="row">
+                        <div class="form-group col-lg-12">
+                          <label for="LastName">Email Address</label>
+                          <input type="text" class="form-control input-md" id="EmailAddress" name="EmailAddress" placeholder="Email Address" required
+                          />
+                        </div>
+                      </div>
+                    </section>
+                    <section class="col col-md-6">
+                      <div class="row">
+                        <div class="form-group col-lg-12">
+                          <label>Password</label>
+                          <input type="text" class="form-control input-md" id="Password" name="Password" placeholder="Password" required />
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                  <div class="form-row text-left">
+                    <section class="col col-md-4">
+                      <div class="row">
+                        <div class="form-group col-lg-12">
+                          <label>Office Phone(s)</label>
+                          <input type="text" class="form-control input-md" id="OfficePhoneNumber" name="OfficePhoneNumber" placeholder="Office Phone(s)"
+                          />
+                        </div>
+                      </div>
+                    </section>
+                    <section class="col col-md-4">
+                      <div class="row">
+                        <div class="form-group col-lg-12">
+                          <label>Mobile Phone(s)</label>
+                          <input type="text" class="form-control input-md" id="MobilePhoneNumber" name="MobilePhoneNumber" placeholder="Mobile Phone(s)"
+                          />
+                        </div>
+                      </div>
+                    </section>
+                    <section class="col col-md-4">
+                      <div class="row">
+                        <div class="form-group col-lg-12">
+                          <label>Home Phone(s)</label>
+                          <input type="text" class="form-control input-md" id="HomePhoneNumber" name="HomePhoneNumber" placeholder="Home Phone(s)"
+                          />
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                  <div class="form-row text-left">
+                    <section class="col col-md-4">
+                      <div class="row">
+                        <div class="form-group col-lg-12">
+                          <label>City</label>
+                          <input type="text" class="form-control input-md" id="HomeCity" name="HomeCity" placeholder="City" />
+                        </div>
+                      </div>
+                    </section>
+                    <section class="col col-md-4">
+                      <div class="row">
+                        <div class="form-group col-lg-12">
+                          <label>State / Province</label>
+                          <input type="text" class="form-control input-md" id="HomeState" name="HomeState" placeholder="State / Province" />
+                        </div>
+                      </div>
+                    </section>
+                    <section class="col col-md-4">
+                      <div class="row">
+                        <div class="form-group col-lg-12">
+                          <label>Country</label>
+                          <input type="text" class="form-control input-md" id="HomeCountry" name="HomeCountry" placeholder="HomeCountry" required />
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                  <div class="form-row text-left">
+                    <section class="col col-md-12">
+                      <div class="row">
+                        <div class="form-group col-lg-12">
+                          <label for="Goals">Goal(s)</label>
+                          <textarea class="form-control input-md" id="JoinReasonNote" name="JoinReasonNote" rows="3" placeholder="Goal(s)"></textarea>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                  <footer>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+                  </footer>
+                </form>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12">
+                <hr class="divider" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4">
+                <a href="login" class="btn btn-outline-secondary">Login</a>
+              </div>
+              <div class="col-lg-4">
+                <a href="forgotpassword" class="btn btn-outline-secondary">Forgot Password?</a>
+              </div>
+              <div class="col-lg-4">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>

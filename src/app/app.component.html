@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a href="/" class="navbar-brand">Angular 6 Membership</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/users">Users</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="outer-outlet">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div class="container"> 
+    <div *ngIf="isAuthenticated(); then logoutUser else loginUser"></div>
+    <ng-template #loginUser><a routerLink="/login">login to continue ...</a></ng-template>
+    <ng-template #logoutUser>Hi, you are logged-in ... <button (click)="logout()" class="btn waves-effect waves-light" type="submit" name="action">Logout</button></ng-template>
+  </div>

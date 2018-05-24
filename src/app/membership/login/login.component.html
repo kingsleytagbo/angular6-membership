@@ -1,0 +1,72 @@
+< <header>
+  <nav class="navbar navbar-default">
+  </nav>
+  </header>
+  <div class="container">
+
+    <div class="row" id="membership">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="jumbotron text-center">
+          <div class="row">
+            <div class="col-lg-12">
+              <form class="form-signin" method="post" action="Login">
+                <header>
+                  <h1 class="form-signin-heading">Please Login</h1>
+                </header>
+                <div class="form-row text-left">
+                  <div class="form-group col-lg-12">
+                    <label for="UserName">Email address</label>
+                    <input [(ngModel)]="user.EmailAddress" id="EmailAddress" name="EmailAddress" type="EmailAddress" placeholder="Your Email Address ..."
+                      class="validate form-control input-normal" required autofocus>
+                  </div>
+                </div>
+                <div class="form-row text-left">
+                  <div class="form-group col-lg-12">
+                    <label for="Password">Password</label>
+                    <input [(ngModel)]="user.Password" id="Password" name="Password" type="Password" placeholder="Your Password ..." class="validate form-control input-normal"
+                      required>
+                  </div>
+                </div>
+                <div class="form-row text-left">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                  </div>
+                </div>
+                <footer>
+
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <button (click)="login()" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <h6 style="color:red;">{{errorMsg}}</h6>
+                    </div>
+                  </div>
+                </footer>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <hr class="divider" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <a href="register" class="btn btn-outline-secondary">Signup</a>
+            </div>
+            <div class="col-lg-4">
+              <a href="forgotpassword" class="btn btn-outline-secondary">Forgot Password?</a>
+            </div>
+            <div class="col-lg-4">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
