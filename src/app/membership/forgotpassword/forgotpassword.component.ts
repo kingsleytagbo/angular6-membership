@@ -22,11 +22,14 @@ export class ForgotpasswordComponent implements OnInit {
   }
 
   public user = new User();
-  public errorMsg = '';
+  public displayMsg = '';
 
   recoverPassword() {
-    if (!this._AuthenticationService.login(this.user)) {
-      this.errorMsg = 'Failed to login ...';
+    if (!this._AuthenticationService.recoverPassword(this.user)) {
+      this.displayMsg = 'Failed to recover your password ...';
+    }
+    else{
+      this.displayMsg = 'Successfully recovered your password ...';
     }
   }
 }

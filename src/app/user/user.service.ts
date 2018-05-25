@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import {Http, Response, RequestOptions, Headers} from '@angular/http';
-import {Observable} from 'rxjs';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Observable } from 'rxjs';
 import { map, filter, switchMap, mergeMap } from 'rxjs/operators';
-import {User} from '../user/user';
+import { User } from '../user/user';
 
 @Injectable()
 export class UserService {
-  constructor(private http:Http) {}
+  constructor(private http: Http) { }
 
-      //3. The local private variable for  storing the URL of the REST API
-private servUrl = "http://localhost:3444"+ '/users';
+  //3. The local private variable for  storing the URL of the REST API
+  private servUrl = "http://localhost:3444" + '/users';
 
   // Placeholder for last id so we can simulate
   // automatic incrementing of id's
@@ -18,46 +18,56 @@ private servUrl = "http://localhost:3444"+ '/users';
   // Placeholder for user's
   users: User[] = [];
 
-  getUserLists(): Observable < any >{
+  getUserLists(): Observable<any> {
     return this.http.get(this.servUrl);
-}
+  }
 
-getUsers(): Array < User >{
-  let result = this.http.get(this.servUrl);
-  let list = Array<any>();
-  result.pipe(mergeMap((response) => response.json()))
-  .subscribe((items) => {
-      list.push(items);
-    });
-  console.log(list);
-  console.log(new User());
-  return list;
-}
+  getUsers(): Array<User> {
+    let result = this.http.get(this.servUrl);
+    let list = Array<any>();
+    result.pipe(mergeMap((response) => response.json()))
+      .subscribe((items) => {
+        list.push(items);
+      });
+    console.log(list);
+    console.log(new User());
+    return list;
+  }
 
   //6. Function to perform POST operation to create a new user
-  addUser(item : User) : Observable < Response > {
-    let header = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({headers: header});
-   return this
-        .http
-        .post(this.servUrl, JSON.stringify(item), options)
-}
+  addUser(item: User): Observable<Response> {
+    let header = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: header });
+    if (item && (!item.UserName || item.UserName.length == 0)) {
+      item.UserName = item.EmailAddress;
+    }
+    let data = this
+      .http
+      .post(this.servUrl + `/`, JSON.stringify(item), options);
 
-//7. Function to update user using PUT operation
-updateUser(UserID:string,item : User) : Observable < Response > {
-    let header = new Headers({'Content-Type': 'application/json'});
-    let options = new RequestOptions({headers: header});
-   return this
-        .http
-        .put(this.servUrl+`/`+UserID, JSON.stringify(item), options)
-}
+    return data;
+  }
 
-//8. Function to remove the user using DELETE operation
-deleteUser(UserID:string) : Observable < Response > {
-   return this
-        .http
-        .delete(this.servUrl+`/`+UserID)
-}
+  //7. Function to update user using PUT operation
+  updateUser(UserID: string, item: User): Observable<Response> {
+    let header = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: header });
+    if (item && (!item.UserName || item.UserName.length == 0)) {
+      item.UserName = item.EmailAddress;
+    }
+    let data = this
+      .http
+      .put(this.servUrl + `/` + UserID, JSON.stringify(item), options);
+
+    return data;
+  }
+
+  //8. Function to remove the user using DELETE operation
+  deleteUser(UserID: string): Observable<Response> {
+    return this
+      .http
+      .delete(this.servUrl + `/` + UserID);
+  }
 
 
   // Simulate DELETE /users/:id
@@ -78,7 +88,7 @@ deleteUser(UserID:string) : Observable < Response > {
   }
 
   // Simulate GET /users
-  getAllUsers():  Array<User> {
+  getAllUsers(): Array<User> {
     return this.getUsers();
   }
 
@@ -90,7 +100,7 @@ deleteUser(UserID:string) : Observable < Response > {
   }
 
   // Toggle user complete
-  toggleUserComplete(user: User){
+  toggleUserComplete(user: User) {
     let updatedUser = this.updateUserById(user._id, {
       IsApproved: !user.IsApproved
     });

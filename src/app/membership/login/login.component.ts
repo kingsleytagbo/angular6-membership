@@ -21,11 +21,11 @@ export class LoginComponent implements OnInit {
   }
 
   public user = new User();
-  public errorMsg = '';
+  public displayMsg = '';
 
   login() {
     if (!this._AuthenticationService.login(this.user)) {
-      this.errorMsg = 'Failed to login ...';
+      this.displayMsg = 'Failed to login ...';
     }
   }
 }

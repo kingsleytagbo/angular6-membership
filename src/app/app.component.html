@@ -21,6 +21,6 @@
 
 <div class="container"> 
     <div *ngIf="isAuthenticated(); then logoutUser else loginUser"></div>
-    <ng-template #loginUser><a routerLink="/login">login to continue ...</a></ng-template>
+    <ng-template #loginUser><a routerLink="/login"></a></ng-template>
     <ng-template #logoutUser>Hi, you are logged-in ... <button (click)="logout()" class="btn waves-effect waves-light" type="submit" name="action">Logout</button></ng-template>
   </div>
