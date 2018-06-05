@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import { RouterModule, Routes } from '@angular/router';
 import {User} from './user';
 import {UserService} from './user.service';
+import {UserRoleService} from '../userrole/userrole.service';
 import { AuthenticationService } from '../shared/services/authentication.service';
 
 
@@ -30,7 +31,9 @@ export class UserComponent implements OnInit {
   UserEditState: string;
 
   //3. Constructor injected with the Service Dependency
-  constructor(private _UserService: UserService, private _AuthenticationService: AuthenticationService) {
+  constructor(private _UserService: UserService, private _AuthenticationService: AuthenticationService,
+    private _UserRoleService: UserRoleService
+    ) {
       this.users = new Array<User>();
       this.message = 'Users';
   }
@@ -70,6 +73,8 @@ export class UserComponent implements OnInit {
       this.selectedUser = item;
       console.log('edit User detals')
       console.log(this.selectedUser);
+      let userroles = this._UserRoleService.getAllUserRolesByUserId(item._id);
+      console.log({'users > getAllUserRolesByUserId': userroles});
   }
 
   //7. Load either Read-Only Titemlate or EditTemplate

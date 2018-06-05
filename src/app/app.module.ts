@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 
 import { UserComponent } from './user/user.component';
 import { UserService } from './user/user.service';
+import { UserRoleService } from './userrole/userrole.service';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { LoginComponent } from './membership/login/login.component';
 import { ForgotpasswordComponent } from './membership/forgotpassword/forgotpassword.component';
@@ -30,7 +31,7 @@ import { RegisterComponent } from './membership/register/register.component';
     RouterModule,
     routing
   ],
-  providers: [UserService, AuthenticationService],
+  providers: [AuthenticationService, UserService, UserRoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

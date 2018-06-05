@@ -75,7 +75,7 @@ export class User {
     StatusID:number;    
     CreateDate: string;
     CreateUserID: number;    
-    ModifyDate: number;    
+    ModifyDate: string;    
     ModifyUserID: number;    
     JoinReason: string;    
     JoinReasonNote: string;
