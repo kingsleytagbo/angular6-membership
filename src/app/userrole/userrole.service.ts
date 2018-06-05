@@ -3,6 +3,8 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 import { map, filter, switchMap, mergeMap } from 'rxjs/operators';
 import { UserRole } from '../userrole/userrole';
+import { Role } from '../role/role';
+
 
 @Injectable()
 export class UserRoleService {
@@ -103,5 +105,19 @@ export class UserRoleService {
     console.log({"getAllUserRolesByUserId>" : {id: id, items: list}});
     return list;
   }
+
+  getAllRoles(): Array<Role>{
+    let items : Array<string> = ['Anonymous', 'Public', 'Subscriber', 'Author', 'Admin', 'Super Admin'] ;
+    let roles : Array<Role> = new Array<Role>();
+    for(let i = 0; i < items.length; i++)
+    {
+      let role =  new Role();
+      role.Name = items[i].trim().toLowerCase();
+      role.Description = items[i];
+      roles.push(role);
+    }
+    return roles;
+  }
+
 
 }

@@ -1,29 +1,28 @@
-
 <header>
-  <nav class="navbar navbar-default">
-          <a class="navbar-brand" href="#">Manage {{message}}</a>
-  </nav>
+    <nav class="navbar navbar-default">
+        <a class="navbar-brand" href="#">Manage {{message}}</a>
+    </nav>
 </header>
 
 <div class="outer-outlet">
-        <router-outlet></router-outlet>
-      </div>
+    <router-outlet></router-outlet>
+</div>
 <div class="container">
-  <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-          <div class="row">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-              </div>
-          </div>
+                </div>
+            </div>
 
-          <!-- BEGIN ITEMS LIST -->
-          <table class="table table-bordered table-striped">
-              <thead>
-                  <tr>
-                      <td colspan="8">
-                          <!--BEGIN SEARCH 
+            <!-- BEGIN ITEMS LIST -->
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <td colspan="8">
+                            <!--BEGIN SEARCH 
                           <div class="row">
                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                   <nav class="navbar navbar-info" style="background-color:#f9f9f9;color: black;">
@@ -43,162 +42,162 @@
                               </div>
                           </div>
                           END SEARCH -->
-                      </td>
-                  </tr>
-                  <tr>
-                      <th>
-                          <button type="button" value="Add" class="btn btn-primary" (click)="addUser()">
-                              <i class="material-icons">note_add</i> &nbsp;Add User
-                          </button>
-                      </th>
-                      <th>User Name</th>
-                      <th>Full Name</th>
-                      <th>Email Address</th>
-                      <th>Password</th>                     
-                      <th>Active?</th>
-                      <th>Locked?</th>
-                      <th>Roles</th>
-                  </tr>
-              </thead>
-              <tfoot>
-                  <tr>
-                      <td colspan="8">
-                          <!--BEGIN PAGINATION 
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <button type="button" value="Add" class="btn btn-primary" (click)="addUser()">
+                                <i class="material-icons">note_add</i> &nbsp;Add User
+                            </button>
+                        </th>
+                        <th>User Name</th>
+                        <th>Full Name</th>
+                        <th>Email Address</th>
+                        <th>Password</th>
+                        <th>Active?</th>
+                        <th>Locked?</th>
+                        <th>Roles</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="8">
+                            <!--BEGIN PAGINATION 
                           <div class="row">
                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                   <pagination-controls (pageChange)="p = $event"></pagination-controls>
                               </div>
                           </div>
                            EMD PAGINATION -->
-                      </td>
-                  </tr>
+                        </td>
+                    </tr>
 
-                  <tr>
-                      <td colspan="8">
-                          <!-- BEGIN STATUS MESSAGE -->
-                          <div class="row">
-                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                  <div>{{statusMessage}}</div>
-                              </div>
-                          </div>
-                          <!-- END STATUS MESSAGE -->
-                      </td>
-                  </tr>
+                    <tr>
+                        <td colspan="8">
+                            <!-- BEGIN STATUS MESSAGE -->
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div>{{statusMessage}}</div>
+                                </div>
+                            </div>
+                            <!-- END STATUS MESSAGE -->
+                        </td>
+                    </tr>
 
-              </tfoot>
-              <tbody>
-                  <tr *ngFor="let user of users;let i=idx">
-                      <ng-template [ngTemplateOutlet]="loadTemplate(user)" [ngTemplateOutletContext]="{ $implicit: user, idx: i }"></ng-template>
-                  </tr>
-              </tbody>
-          </table>
+                </tfoot>
+                <tbody>
+                    <tr *ngFor="let user of users;let i=idx">
+                        <ng-template [ngTemplateOutlet]="loadTemplate(user)" [ngTemplateOutletContext]="{ $implicit: user, idx: i }"></ng-template>
+                    </tr>
+                </tbody>
+            </table>
 
-          <!-- END ITEMS LIST -->
+            <!-- END ITEMS LIST -->
 
-      </div>
-  </div>
+        </div>
+    </div>
 
-  <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <hr />
-      </div>
-  </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <hr />
+        </div>
+    </div>
 
-  <!--BEGIN The Html Template for Read-Only Rows-->
-  <ng-template #readOnlyTemplate let-user>
-      <td>
-          <button type="submit" value="Edit" class="btn btn-default" (click)="editUser(user)">
-              <i class="material-icons">edit</i>
-          </button>
+    <!--BEGIN The Html Template for Read-Only Rows-->
+    <ng-template #readOnlyTemplate let-user>
+        <td>
+            <button type="submit" value="Edit" class="btn btn-default" (click)="editUser(user)">
+                <i class="material-icons">edit</i>
+            </button>
 
-          <button type="submit" value="Delete" (click)="deleteUser(user)" class="btn btn-danger">
-              <i class="material-icons">delete</i>
-          </button>
-      </td>
-      <td>{{user.UserName}}</td>
-      <td>{{user.FirstName}}&nbsp;{{user.LastName}}</td>
-      <td>{{user.EmailAddress}}</td>
-      <td>{{user.Password}}</td>
-      <td>{{user.IsApproved ?'Yes':'No'}}</td>
-      <td>
-          <span *ngIf="user.IsLockedOut === true">
-              <i class="material-icons">locked</i>
-          </span>
-          <span *ngIf="user.IsLockedOut === false">
-              <i class="material-icons">lock_open</i>
-          </span>
-      </td>
-      <td>{{user.Roles}}</td>
-  </ng-template>
-  <!--END The Html Template for Read-Only Rows-->
-  <!--Ends Here-->
-
-
-
-  <!--The Html Template for Editable Rows-->
-  <ng-template #editTemplate>
-      <td colspan="12">
-
-          <div class="row">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div id="Form1" name="Form1">
-
-                      <div class="row">
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                              <label>User Name</label>
-                          </div>
-                          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                              <input type="text" required [(ngModel)]="selectedUser.UserName" class="form-control input-normal" />
-                          </div>
-                      </div>
-
-                      <div class="row">
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                              <label>First Name</label>
-                          </div>
-                          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                              <input type="text" required [(ngModel)]="selectedUser.FirstName" class="form-control input-normal" />
-                          </div>
-                      </div>
+            <button type="submit" value="Delete" (click)="deleteUser(user)" class="btn btn-danger">
+                <i class="material-icons">delete</i>
+            </button>
+        </td>
+        <td>{{user.UserName}}</td>
+        <td>{{user.FirstName}}&nbsp;{{user.LastName}}</td>
+        <td>{{user.EmailAddress}}</td>
+        <td>{{user.Password}}</td>
+        <td>{{user.IsApproved ?'Yes':'No'}}</td>
+        <td>
+            <span *ngIf="user.IsLockedOut === true">
+                <i class="material-icons">locked</i>
+            </span>
+            <span *ngIf="user.IsLockedOut === false">
+                <i class="material-icons">lock_open</i>
+            </span>
+        </td>
+        <td>{{user.Roles}}</td>
+    </ng-template>
+    <!--END The Html Template for Read-Only Rows-->
+    <!--Ends Here-->
 
 
-                      <div class="row">
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                              <label>Last Name</label>
-                          </div>
-                          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                              <input type="text" required [(ngModel)]="selectedUser.LastName" class="form-control input-normal" />
-                          </div>
-                      </div>
 
-                      <div class="row">
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                              <label>Email Address</label>
-                          </div>
-                          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                              <input type="text" required [(ngModel)]="selectedUser.EmailAddress" class="form-control input-normal" />
-                          </div>
-                      </div>
+    <!--The Html Template for Editable Rows-->
+    <ng-template #editTemplate>
+        <td colspan="12">
 
-                      <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <label>Password</label>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div id="Form1" name="Form1">
+
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <label>User Name</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <input type="text" required [(ngModel)]="selectedUser.UserName" class="form-control input-normal" />
+                            </div>
                         </div>
-                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                            <input type="text" required [(ngModel)]="selectedUser.Password" class="form-control input-normal" />
-                        </div>
-                    </div>
 
-                      <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                            <label>Active</label>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <label>First Name</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <input type="text" required [(ngModel)]="selectedUser.FirstName" class="form-control input-normal" />
+                            </div>
                         </div>
-                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                            <input type="checkbox"  [(ngModel)]="selectedUser.IsApproved" class="form-control input-normal" />
-                        </div>
-                    </div>
 
-                    <div class="row">
+
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <label>Last Name</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <input type="text" required [(ngModel)]="selectedUser.LastName" class="form-control input-normal" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <label>Email Address</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <input type="text" required [(ngModel)]="selectedUser.EmailAddress" class="form-control input-normal" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <label>Password</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <input type="text" required [(ngModel)]="selectedUser.Password" class="form-control input-normal" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <label>Active</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <input type="checkbox" [(ngModel)]="selectedUser.IsApproved" class="form-control input-normal" />
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                 <label>Locked Out?</label>
                             </div>
@@ -208,49 +207,51 @@
                         </div>
 
 
-                      <div class="row">
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                              <label>Roles</label>
-                          </div>
-                          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                              <input type="text" required [(ngModel)]="selectedUser.Roles" class="form-control input-normal" />
-                          </div>
-                      </div>
+                        <!-- BEGIN  USER ROLES -->
+                        <div class="row" *ngIf="(UserRoleDetails.length > 0)">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                <label>Roles</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <select [(ngModel)]="selectedUser.Roles" class="form-control" required>
+                                    <option *ngFor="let user_role of UserRoleDetails" [ngValue]="user_role.RoleName">{{user_role.RoleName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- END  USER ROLES -->
 
-                      
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                <input type="hidden" [(ngModel)]="selectedUserID" />
+                            </div>
+                        </div>
+                        <footer>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <button type="button" value="Save" (click)="saveUser()" class="btn btn-info">
+                                        <i class="material-icons">save</i>Save User
+                                    </button>
 
-                      <div class="row">
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                          </div>
-                          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                              <input type="hidden" [(ngModel)]="selectedUserID" />
-                          </div>
-                      </div>
-                      <footer>
-                          <div class="row">
-                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                  <button type="button" value="Save" (click)="saveUser()" class="btn btn-info">
-                                      <i class="material-icons">save</i>Save User
-                                  </button>
+                                    <button type="button" value="Cancel" (click)="cancel()" class="btn btn-default">
+                                        <i class="material-icons">close</i>Close User
+                                    </button>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+            </div>
 
-                                  <button type="button" value="Cancel" (click)="cancel()" class="btn btn-default">
-                                      <i class="material-icons">close</i>Close User
-                                  </button>
-                              </div>
-                          </div>
-                      </footer>
-                  </div>
-              </div>
-          </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <hr />
+                </div>
+            </div>
 
-          <div class="row">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <hr />
-              </div>
-          </div>
-
-      </td>
-  </ng-template>
-  <!--Ends Here-->
+        </td>
+    </ng-template>
+    <!--Ends Here-->
 
 </div>
